@@ -1,23 +1,26 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AppBarAndDrawerContainer from "./common/AppBarAndDrawerContainer";
+import HelloPage from "./HelloPage/HelloPage";
+import TopPage from "./TopPage/TopPage";
 
-function App() {
+interface Props {}
+
+const App: React.FC<Props> = (props: Props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppBarAndDrawerContainer>
+        <Switch>
+          <Route path="/hello">
+            <HelloPage />
+          </Route>
+          <Route path="/">
+            <TopPage />
+          </Route>
+        </Switch>
+      </AppBarAndDrawerContainer>
+    </Router>
   );
-}
+};
 
 export default App;
