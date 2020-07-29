@@ -33,9 +33,7 @@ const OriginalAppBar: React.FC<Props> = (props: Props) => {
         <MenuButton
           color="inherit"
           aria-label="switch drawer"
-          onClick={() =>
-            props.setShowingDrawer((prevShowDrawer) => !prevShowDrawer)
-          }
+          onClick={() => props.setShowingDrawer((prevShowDrawer) => !prevShowDrawer)}
           edge="start"
         >
           <MenuIcon />

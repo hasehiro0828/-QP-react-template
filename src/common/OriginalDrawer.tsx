@@ -5,12 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  useTheme,
-} from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import MailIcon from "@material-ui/icons/Mail";
@@ -45,11 +40,7 @@ const OriginalDrawer: React.FC<Props> = (props: Props) => {
     >
       <ToolbarSpaceDiv>
         <IconButton onClick={() => props.setShowingDrawer(false)}>
-          {theme.direction === "rtl" ? (
-            <ChevronRightIcon />
-          ) : (
-            <ChevronLeftIcon />
-          )}
+          {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
       </ToolbarSpaceDiv>
       <Divider />
