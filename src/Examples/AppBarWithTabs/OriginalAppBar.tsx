@@ -3,12 +3,13 @@ import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { styled } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import SettingsIcon from "@material-ui/icons/Settings";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 interface Props {
   showingDrawer: boolean;
@@ -91,25 +92,23 @@ const OriginalAppBar: React.FC<Props> = (props: Props) => {
   );
 };
 
-const TitleTypography = styled(Typography)({
-  flexGrow: 1,
-});
+const TitleTypography = styled(Typography)`
+  flex-grow: 1;
+`;
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-}));
+const StyledAppBar = styled(AppBar)`
+  ${(props: { theme: Theme }) => css`
+    z-index: ${props.theme.zIndex.drawer + 1};
+  `}
+`;
 
-const StyledToolbar = styled(Toolbar)({
-  minHeight: 0, // Tabsの高さに合わせるためminHeightを上書き
-});
+const StyledToolbar = styled(Toolbar)`
+  min-height: 0;
+`;
 
-const TopLink = styled(Link)({
-  color: "inherit",
-  textDecoration: "inherit",
-});
+const TopLink = styled(Link)`
+  color: inherit;
+  text-decoration: inherit;
+`;
 
 export default OriginalAppBar;
