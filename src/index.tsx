@@ -1,6 +1,7 @@
 import { MuiThemeProvider, StylesProvider } from "@material-ui/core/styles";
 import React from "react";
 import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { theme } from "./theme";
@@ -9,7 +10,9 @@ ReactDOM.render(
   <React.StrictMode>
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </MuiThemeProvider>
     </StylesProvider>
   </React.StrictMode>,
