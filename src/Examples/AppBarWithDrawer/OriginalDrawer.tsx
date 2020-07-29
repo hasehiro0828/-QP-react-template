@@ -15,6 +15,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ToolbarSpaceDiv } from "./StyledParts";
 
+const drawerWidth = 240;
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    drawer: {
+      width: drawerWidth,
+      flexShrink: 0,
+      whiteSpace: "nowrap",
+    },
+    drawerOpen: {
+      width: drawerWidth,
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    drawerClose: {
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      overflowX: "hidden",
+      width: theme.spacing(7) + 1,
+    },
+  })
+);
+
 interface Props {
   showingDrawer: boolean;
   setShowingDrawer: React.Dispatch<React.SetStateAction<boolean>>;
@@ -39,7 +65,7 @@ const OriginalDrawer: React.FC<Props> = (props: Props) => {
       }}
     >
       <ToolbarSpaceDiv>
-        <IconButton onClick={() => props.setShowingDrawer(false)}>
+        <IconButton onClick={(): void => props.setShowingDrawer(false)}>
           {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
       </ToolbarSpaceDiv>
@@ -77,29 +103,4 @@ const OriginalDrawer: React.FC<Props> = (props: Props) => {
   );
 };
 
-const drawerWidth = 240;
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-      whiteSpace: "nowrap",
-    },
-    drawerOpen: {
-      width: drawerWidth,
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    drawerClose: {
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      overflowX: "hidden",
-      width: theme.spacing(7) + 1,
-    },
-  })
-);
 export default OriginalDrawer;
