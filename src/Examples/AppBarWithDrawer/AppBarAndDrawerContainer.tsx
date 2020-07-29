@@ -1,6 +1,7 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { styled } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core/styles";
 import React from "react";
+import styled, { css } from "styled-components";
 import OriginalAppBar from "./OriginalAppBar";
 import OriginalDrawer from "./OriginalDrawer";
 import { ToolbarSpaceDiv } from "./StyledParts";
@@ -25,13 +26,15 @@ const AppBarAndDrawerContainer: React.FC<Props> = (props: Props) => {
   );
 };
 
-const RootDiv = styled("div")({
-  display: "flex",
-});
+const RootDiv = styled.div`
+  display: flex;
+`;
 
-const MainContent = styled("main")(({ theme }) => ({
-  flexGrow: 1,
-  padding: theme.spacing(3),
-}));
+const MainContent = styled.main`
+  ${(props: { theme: Theme }) => css`
+    flex-grow: 1;
+    padding: ${props.theme.spacing(3)}px;
+  `}
+`;
 
 export default AppBarAndDrawerContainer;
