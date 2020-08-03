@@ -14,7 +14,7 @@ const AppBarAndDrawerContainer: React.FC<Props> = (props: Props) => {
   return (
     <RootDiv>
       <CssBaseline />
-      <OriginalAppBar showingDrawer={showingDrawer} setShowingDrawer={setShowingDrawer} />
+      <OriginalAppBar />
       <MainContent>
         <ToolbarSpaceDiv />
         {props.children}

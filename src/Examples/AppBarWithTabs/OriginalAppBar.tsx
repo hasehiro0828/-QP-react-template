@@ -11,10 +11,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-interface Props {
-  showingDrawer: boolean;
-  setShowingDrawer: React.Dispatch<React.SetStateAction<boolean>>;
-}
+interface Props {}
 
 const OriginalAppBar: React.FC<Props> = (props: Props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
