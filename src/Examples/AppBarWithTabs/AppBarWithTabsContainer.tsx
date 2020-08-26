@@ -9,8 +9,6 @@ interface Props {
 }
 
 const AppBarAndDrawerContainer: React.FC<Props> = (props: Props) => {
-  const [showingDrawer, setShowingDrawer] = React.useState(false);
-
   return (
     <RootDiv>
       <CssBaseline />

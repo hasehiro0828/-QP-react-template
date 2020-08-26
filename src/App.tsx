@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AppBarAndDrawerContainer from "./Examples/AppBarWithDrawer/AppBarAndDrawerContainer";
-// import AppBarAndDrawerContainer from "./Examples/AppBarWithTabs/AppBarAndDrawerContainer";
+// import AppBarContainer from "./Examples/AppBarWithDrawer/AppBarAndDrawerContainer";
+import AppBarContainer from "./Examples/AppBarWithTabs/AppBarWithTabsContainer";
 import HelloPage from "./HelloPage/HelloPage";
 import TopPage from "./TopPage/TopPage";
 
@@ -10,7 +10,7 @@ interface Props {}
 const App: React.FC<Props> = (props: Props) => {
   return (
     <Router>
-      <AppBarAndDrawerContainer>
+      <AppBarContainer>
         <Switch>
           <Route path="/hello">
             <HelloPage />
@@ -19,7 +19,7 @@ const App: React.FC<Props> = (props: Props) => {
             <TopPage />
           </Route>
         </Switch>
-      </AppBarAndDrawerContainer>
+      </AppBarContainer>
     </Router>
   );
 };
