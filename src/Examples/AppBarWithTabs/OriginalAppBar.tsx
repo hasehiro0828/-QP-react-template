@@ -3,13 +3,12 @@ import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { Theme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import SettingsIcon from "@material-ui/icons/Settings";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled, { css, FlattenSimpleInterpolation } from "styled-components";
+import styled from "styled-components";
 
 interface Props {}
 
@@ -31,7 +30,7 @@ const OriginalAppBar: React.FC<Props> = (props: Props) => {
     setAnchorEl(null);
   };
   return (
-    <StyledAppBar position="fixed">
+    <AppBar position="fixed">
       <StyledToolbar>
         <TitleTypography variant="h6" noWrap>
           <TopLink to="/" onClick={() => setTabValue(0)}>
@@ -85,7 +84,7 @@ const OriginalAppBar: React.FC<Props> = (props: Props) => {
           </Menu>
         </Box>
       </StyledToolbar>
-    </StyledAppBar>
+    </AppBar>
   );
 };
 
@@ -93,13 +92,8 @@ const TitleTypography = styled(Typography)`
   flex-grow: 1;
 `;
 
-const StyledAppBar = styled(AppBar)`
-  ${(props: { theme: Theme }): FlattenSimpleInterpolation => css`
-    z-index: ${props.theme.zIndex.drawer + 1};
-  `}
-`;
-
 const StyledToolbar = styled(Toolbar)`
+  /* min-heightを0にすることで、tabの高さに合わせている */
   min-height: 0;
 `;
 
