@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import SettingsIcon from "@material-ui/icons/Settings";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 interface Props {}
 
@@ -94,7 +94,7 @@ const TitleTypography = styled(Typography)`
 `;
 
 const StyledAppBar = styled(AppBar)`
-  ${(props: { theme: Theme }) => css`
+  ${(props: { theme: Theme }): FlattenSimpleInterpolation => css`
     z-index: ${props.theme.zIndex.drawer + 1};
   `}
 `;

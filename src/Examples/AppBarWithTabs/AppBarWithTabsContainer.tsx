@@ -1,7 +1,7 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Theme } from "@material-ui/core/styles";
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 import OriginalAppBar from "./OriginalAppBar";
 
 interface Props {
@@ -26,14 +26,14 @@ const RootDiv = styled.div`
 `;
 
 const MainContent = styled.main`
-  ${(props: { theme: Theme }) => css`
+  ${(props: { theme: Theme }): FlattenSimpleInterpolation => css`
     flex-grow: 1;
     padding: ${props.theme.spacing(3)}px;
   `}
 `;
 
 export const ToolbarSpaceDiv = styled.div`
-  ${(props: { theme: Theme }) => css`
+  ${(props: { theme: Theme }): FlattenSimpleInterpolation => css`
     display: flex;
     align-items: center;
     justify-content: flex-end;
