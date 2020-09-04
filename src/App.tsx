@@ -1,20 +1,30 @@
 import { MuiThemeProvider, StylesProvider } from "@material-ui/core/styles";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 // import AppBarContainer from "./Examples/AppBarWithDrawer/AppBarAndDrawerContainer";
 import AppBarContainer from "./Examples/AppBarWithTabs/AppBarWithTabsContainer";
 import HelloPage from "./HelloPage/HelloPage";
-import theme from "./theme";
+import { ThemeContext } from "./theme/ThemeContextProvider";
+import ThemeSelector from "./theme/ThemeSelector";
 import TopPage from "./TopPage/TopPage";
 
 interface Props {}
 
 const App: React.FC<Props> = (props: Props) => {
+  const themeContext = useContext(ThemeContext);
+
+  useEffect(() => {
+    const themeName = localStorage.getItem("theme");
+    if (themeName !== null) {
+      themeContext.handleThemeChange(themeName);
+    }
+  }, [themeContext]);
+
   return (
     <StylesProvider injectFirst>
-      <MuiThemeProvider theme={theme}>
-        <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={themeContext.theme}>
+        <ThemeProvider theme={themeContext.theme}>
           <Router>
             <AppBarContainer>
               <Switch>
@@ -25,6 +35,7 @@ const App: React.FC<Props> = (props: Props) => {
                   <TopPage />
                 </Route>
               </Switch>
+              <ThemeSelector />
             </AppBarContainer>
           </Router>
         </ThemeProvider>
